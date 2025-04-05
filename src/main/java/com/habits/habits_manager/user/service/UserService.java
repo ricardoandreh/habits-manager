@@ -2,7 +2,7 @@ package com.habits.habits_manager.user.service;
 
 import com.habits.habits_manager.genericExceptions.DatabaseException;
 import com.habits.habits_manager.user.exceptions.UserNotFoundException;
-import com.habits.habits_manager.user.model.User;
+import com.habits.habits_manager.user.model.UserModel;
 import com.habits.habits_manager.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -17,16 +17,16 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public List<User> findAll() {
+    public List<UserModel> findAll() {
         return repository.findAll();
     }
 
-    public User findById(String id) {
-        Optional<User> obj = repository.findById(id);
+    public UserModel findById(String id) {
+        Optional<UserModel> obj = repository.findById(id);
         return obj.orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public User insert(User obj) {
+    public UserModel insert(UserModel obj) {
         return repository.save(obj);
     }
 
@@ -42,16 +42,16 @@ public class UserService {
         }
     }
 
-    public User update(String id, User obj) {
+    public UserModel update(String id, UserModel obj) {
         if (repository.existsById(id)) {
-            User entity = repository.getReferenceById(id);
+            UserModel entity = repository.getReferenceById(id);
             updateData(entity, obj);
             return repository.save(entity);
         }
         return null;
     }
 
-    public void updateData(User entity, User obj) {
+    public void updateData(UserModel entity, UserModel obj) {
         entity.setLogin(obj.getLogin());
         entity.setEmail(obj.getEmail());
         entity.setPhone(obj.getPhone());
