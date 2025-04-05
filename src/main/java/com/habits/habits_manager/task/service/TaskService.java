@@ -53,12 +53,12 @@ public class TaskService {
 
     public void updateData(Task entity, Task obj) {
         entity.setTitle(obj.getTitle());
-        entity.setTime(obj.getTime());
-        entity.setLocation(obj.getLocation());
-        entity.setDuration(obj.getDuration());
-        entity.setIcon(obj.getIcon());
-        entity.setColor(obj.getColor());
+        entity.setDescription(obj.getDescription());
+        entity.setDueDate(obj.getDueDate());
         entity.setCompleted(obj.isCompleted());
         entity.setType(obj.getType());
+        entity.setLocation(obj.getLocation());
+        entity.setCreatedAt(obj.getCreatedAt());
+        entity.setUpdatedAt(obj.getUpdatedAt());
     }
 }
