@@ -1,6 +1,6 @@
 package com.habits.habits_manager.task.model;
 
-import com.habits.habits_manager.user.model.User;
+import com.habits.habits_manager.user.model.UserModel;
 import com.habits.habits_manager.task.enums.IconType;
 import com.habits.habits_manager.task.enums.TaskType;
 import jakarta.persistence.*;
@@ -36,7 +36,7 @@ public class Task implements Serializable {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private UserModel user;
     
     @Column(nullable = false)
     private String color;
